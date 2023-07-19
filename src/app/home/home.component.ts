@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  titulos = ['Matematica Discreta', 'Quimica', 'Analisis Matematico 2', 'Equipos y Procesos', 'Introduccion a la Universidad']
+  titulos = [{titulo: 'algebra', ano:'2023'}]
 }
