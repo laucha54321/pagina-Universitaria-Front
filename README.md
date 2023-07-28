@@ -1,3 +1,10 @@
+## Cosas Utiles
+[TRELLO](https://trello.com/b/RQfTdn2D/tpdesarollodesoftware)
+
+[FRONT END REPO](https://github.com/laucha54321/pagina-Universitaria-Front)
+
+[BACK END REPO](https://github.com/laucha54321/tp-mysql-be/settings)
+
 # TpDesarolloSoftware
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
