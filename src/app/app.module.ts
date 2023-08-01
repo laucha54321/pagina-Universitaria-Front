@@ -10,6 +10,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     CursoComponent,
     HomeComponent,
     RegistroComponent,
-    LoginComponent
+    LoginComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

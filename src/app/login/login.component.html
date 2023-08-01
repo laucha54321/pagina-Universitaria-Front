@@ -1,5 +1,5 @@
 <html lang="en" data-bs-theme="dark"><head><script src="/docs/5.3/assets/js/color-modes.js"></script>
-<!--#section -->
+<div>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
@@ -96,10 +96,11 @@
     z-index: 1500;
   }
 </style>
-<!--#endsection -->
+</div>
   
-  <!-- Custom styles for this template -->
-  <link href="login.component.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="login.component.css" rel="stylesheet">
+
 </head>
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -160,7 +161,8 @@
     id="floatingInput"
     placeholder="43577"
     ngModel
-    name="id_persona">
+    name="id_persona"
+    required>
     <label for="floatingInput">ID</label>
   </div>
   <div class="form-floating">
@@ -170,11 +172,12 @@
       id="floatingPassword"
       placeholder="Password"
       ngModel
-      name="contrasena">
+      name="contrasena"
+      required>
     <label for="floatingPassword">Contraseña</label>
   </div>
 
-  <button class="btn btn-primary w-100 py-2" type="submit">Acceder</button>
+  <button class="btn btn-primary w-100 py-2" type="submit" [disabled]="!f.valid">Acceder</button>
   <p class="mt-5 mb-3 text-body-secondary">Pagina Universitaria 2023</p>
 </form>
 </main>

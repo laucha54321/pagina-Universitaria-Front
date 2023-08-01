@@ -1,4 +1,7 @@
 <style>
+body{
+  min-height: 100vh;
+}
 a{
     text-decoration: none;
 }
@@ -6,6 +9,8 @@ a:hover{
     text-decoration: underline;
 }
 </style>
+<html>
+<body>
 <div class="container">    
 <!-- Header -->
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
@@ -21,8 +26,8 @@ a:hover{
         <li><a href="#" class="nav-link px-2">Preferencias</a></li>
       </ul>
       <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-primary me-2">Login</button>
-        <button type="button" class="btn btn-primary">Sign-up</button>
+        <button type="button" class="btn btn-outline-primary me-2" routerLink="/login">Login</button>
+        <button type="button" class="btn btn-primary" routerLink="/registro">Sign-up</button>
       </div>
     </header>
 
@@ -52,4 +57,7 @@ a:hover{
       </a>
     </div>
  </div>
+</div>
+</body>
+</html>
   
