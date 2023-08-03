@@ -152,9 +152,9 @@
   
 <main class="form-signin w-100 m-auto">
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-  <h1 class="h3 mb-3 fw-normal">Ingreso</h1>
+  <h1 class="h3 mb-3 fw-normal">{{isSignedUp ? 'Ingreso' : 'Registrame'}}</h1>
 
-  <div class="form-floating">
+  <div class="form-floating" *ngIf="isSignedUp">
     <input
     type="text"
     class="form-control"
@@ -164,6 +164,53 @@
     name="id_persona"
     required>
     <label for="floatingInput">ID</label>
+  </div>
+  <div *ngIf="!isSignedUp">
+    <div class="form-floating">
+      <input
+      type="text"
+      class="form-control"
+      id="floatingNombre"
+      placeholder="43577"
+      ngModel
+      name="nombre"
+      required>
+      <label for="floatingInput">Nombre</label>
+    </div>
+    <div class="form-floating">
+        <input
+        type="text"
+        class="form-control"
+        id="floatingApellido"
+        placeholder="43577"
+        ngModel
+        name="apellido"
+        required>
+        <label for="floatingInput">Apellido</label>
+      </div>
+    <div class="form-floating">
+        <input
+        type="text"
+        class="form-control"
+        id="floatingEmail"
+        placeholder="43577"
+        ngModel
+        name="email"
+        required
+        email>
+        <label for="floatingInput">Email</label>
+    </div>
+    <div class="form-floating">
+        <input
+        type="text"
+        class="form-control"
+        id="floatingFechaNacimiento"
+        placeholder="43577"
+        ngModel
+        name="fecha_nacimiento"
+        required>
+        <label for="floatingInput">Fecha de Nacimiento</label>
+    </div>
   </div>
   <div class="form-floating">
     <input
@@ -177,9 +224,13 @@
     <label for="floatingPassword">Contraseña</label>
   </div>
 
-  <button class="btn btn-primary w-100 py-2" type="submit" [disabled]="!f.valid">Acceder</button>
-  <p class="mt-5 mb-3 text-body-secondary">Pagina Universitaria 2023</p>
+  <button class="btn btn-primary w-100 py-2" type="submit" [disabled]="!f.valid">{{ isSignedUp ?'Acceder':'Registrarse'}}</button> 
 </form>
+
+<p class="mt-3 mb-0" *ngIf="isSignedUp">Todavia no estas Registrado?</p>
+<a class="mt-3" (click)="onSwitch()">{{ isSignedUp ?'Registrarse':'Ya tengo Cuenta'}}</a>
+
+<p class="mt-5 mb-3 text-body-secondary">Pagina Universitaria 2023</p>
 </main>
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
