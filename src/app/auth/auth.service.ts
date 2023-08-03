@@ -1,23 +1,36 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { Router } from "@angular/router"
 import { Subject } from "rxjs";
+import { tap } from "rxjs/operators";
 import { User } from "./user.model";
 
+interface AuthResponseData{
+    id:string;
+    accessToken:string;
+}
+
 @Injectable({providedIn:'root'})
+
+
 
 export class AuthService{
 
     user = new Subject<User>();
 
-    constructor(private http: HttpClient){
+    constructor(private http: HttpClient, private router:Router){
 
     }
 
     login(datos:any){
-        return this.http.post('http://127.0.0.1:3080/login',{
+        return this.http.post<AuthResponseData>('http://127.0.0.1:3080/login',{
             "id":datos.id,
             "contrasena":datos.contrasena
-        })
+        }).pipe(tap(responseData=>{
+            const user = new User(responseData.id,responseData.accessToken)
+            console.log(user)
+            this.user.next(user);
+        }))
     }
 
     signUp(datos:any){
@@ -31,5 +44,7 @@ export class AuthService{
           "fecha_nacimiento":datos.fecha_nacimiento
         })
     }
+
+
 
 }

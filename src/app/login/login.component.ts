@@ -8,8 +8,12 @@ import { AuthService } from '../auth/auth.service';
 })
 export class LoginComponent {
 
-  isSignedUp = true;
+  error?: string;
 
+
+  isSignedUp = true;
+  wrongPass = false;
+  
   constructor(private authService:AuthService){
 
   }
@@ -22,9 +26,15 @@ export class LoginComponent {
       this.authService.login({
         id:form.value.id_persona,
         contrasena:form.value.contrasena
-      }).subscribe(responseData=>{
-        console.log(responseData)
-      })
+      }).subscribe(
+        responseData=>{
+          console.log(responseData);
+          this.error = '';
+        },
+        resError=>{
+          this.error = resError.error
+        }
+        )
     }else{
       console.log(form)
       this.authService.signUp({
