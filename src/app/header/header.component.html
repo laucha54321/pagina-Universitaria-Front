@@ -6,10 +6,26 @@
         </a>
         </div>
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" *ngIf="isSingedIn">
-        <li><a href="#" class="nav-link px-2">Materias</a></li>
-        <li><a href="#" class="nav-link px-2">Calificaciones</a></li>
-        <li><a href="#" class="nav-link px-2">Calendario</a></li>
-        <li><a href="#" class="nav-link px-2">Preferencias</a></li>
+        <li routerLinkActive="active">
+            <a href="#" class="nav-link px-2" routerLink="/calificaciones">
+                Materias
+            </a>
+        </li>
+        <li routerLinkActive="active">
+            <a href="#" class="nav-link px-2" routerLink="/calificaciones">
+                Calificaciones
+            </a>
+        </li>
+        <li routerLinkActive="active">
+            <a href="#" class="nav-link px-2" routerLink="/calificaciones">
+                Calendario
+            </a>
+        </li>
+        <li routerLinkActive="active">
+            <a href="#" class="nav-link px-2" routerLink="/calificaciones">
+                Preferencias
+            </a>
+        </li>
         </ul>
         <div class="col-md-3 text-end" *ngIf="!isSingedIn">
         <button type="button" class="btn btn-outline-primary me-2" routerLink="/login">Login</button>

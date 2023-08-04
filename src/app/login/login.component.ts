@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,11 +11,10 @@ export class LoginComponent {
 
   error?: string;
 
-
   isSignedUp = true;
   wrongPass = false;
   
-  constructor(private authService:AuthService){
+  constructor(private authService:AuthService, private router:Router){
 
   }
   onSwitch(){
@@ -28,7 +28,7 @@ export class LoginComponent {
         contrasena:form.value.contrasena
       }).subscribe(
         responseData=>{
-          console.log(responseData);
+          this.router.navigate(['/'])
           this.error = '';
         },
         resError=>{
