@@ -22,15 +22,27 @@ export class AuthService{
 
     }
 
+    autoLogin(){
+        const userData:{
+            id:string,
+            _token:string
+        } = JSON.parse(localStorage.getItem('userData'));
+        console.log(userData.id,userData._token)
+        const loadedUser = new User(userData.id,userData._token);
+        this.user.next(loadedUser);
+    }
+
+
     login(datos:any){
         return this.http.post<AuthResponseData>('http://127.0.0.1:3080/login',{
             "id":datos.id,
             "contrasena":datos.contrasena
         }).pipe(tap(responseData=>{
-            const user = new User(responseData.id,responseData.accessToken)
-            console.log(user)
+            console.log('logged in')
+            const user = new User(responseData.id,responseData.accessToken);
+            localStorage.setItem('userData',JSON.stringify(user));
             this.user.next(user);
-        }))
+        }));
     }
 
     signUp(datos:any){
@@ -42,7 +54,7 @@ export class AuthService{
           "email":datos.email,
           "telefono":datos.telefono,
           "fecha_nacimiento":datos.fecha_nacimiento
-        })
+        });
     }
 
 

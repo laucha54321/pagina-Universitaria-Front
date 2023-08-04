@@ -28,7 +28,7 @@ export class LoginComponent {
         contrasena:form.value.contrasena
       }).subscribe(
         responseData=>{
-          this.router.navigate(['/'])
+          // this.router.navigate(['/'])
           this.error = '';
         },
         resError=>{

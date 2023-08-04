@@ -15,11 +15,11 @@ export class HeaderComponent implements OnInit, OnDestroy{
   constructor(private authService:AuthService){}
 
   ngOnInit(){
-    console.log(this.authService.user)
     this.userSub = this.authService.user.subscribe(user =>{
-      console.log(user)
+      console.log("Header:",user)
       this.isSingedIn = !!user.token;
     });
+    console.log('Header: ',this.userSub)
   }
 
   ngOnDestroy(){
