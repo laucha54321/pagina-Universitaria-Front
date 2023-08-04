@@ -11,6 +11,8 @@ export class LoginComponent {
 
   error?: string;
 
+  light_theme = false;
+
   isSignedUp = true;
   wrongPass = false;
   
@@ -21,6 +23,10 @@ export class LoginComponent {
     this.isSignedUp = !this.isSignedUp;
   }
   
+  toggleTheme(){
+    this.light_theme = !this.light_theme
+  }
+
   onSubmit(form: NgForm){
     if(this.isSignedUp){
       this.authService.login({
@@ -28,7 +34,7 @@ export class LoginComponent {
         contrasena:form.value.contrasena
       }).subscribe(
         responseData=>{
-          // this.router.navigate(['/'])
+          this.router.navigate(['/'])
           this.error = '';
         },
         resError=>{

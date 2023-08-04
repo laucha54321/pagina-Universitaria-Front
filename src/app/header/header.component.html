@@ -27,9 +27,13 @@
             </a>
         </li>
         </ul>
-        <div class="col-md-3 text-end" *ngIf="!isSingedIn">
-        <button type="button" class="btn btn-outline-primary me-2" routerLink="/login">Login</button>
-        <button type="button" class="btn btn-primary" routerLink="/registro">Sign-up</button>
+        <div class="col-md-3 text-end" >
+            <button type="button" class="btn btn-outline-primary me-2" routerLink="/login" *ngIf="!isSingedIn">
+                Login
+            </button>
+            <button type="button" class="btn btn-outline-primary me-2" (click)="onLogout()" routerLink="/login" *ngIf="isSingedIn">
+                Logout
+            </button>
         </div>
     </header>
 </div>

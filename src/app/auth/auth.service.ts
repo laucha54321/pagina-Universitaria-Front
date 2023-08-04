@@ -19,7 +19,6 @@ export class AuthService{
     user = new Subject<User>();
 
     constructor(private http: HttpClient, private router:Router){
-
     }
 
     autoLogin(){
@@ -27,20 +26,30 @@ export class AuthService{
             id:string,
             _token:string
         } = JSON.parse(localStorage.getItem('userData'));
-        console.log(userData.id,userData._token)
-        const loadedUser = new User(userData.id,userData._token);
-        this.user.next(loadedUser);
+        if(userData){
+            const user = new User(userData.id,userData._token);
+            console.log(user);
+            this.user.next(user);
+        }else{
+            this.router.navigate(['/login']);
+        }
     }
 
+    logout(){
+        this.user.next(null);
+        localStorage.removeItem('userData');
+    }
 
     login(datos:any){
         return this.http.post<AuthResponseData>('http://127.0.0.1:3080/login',{
             "id":datos.id,
             "contrasena":datos.contrasena
         }).pipe(tap(responseData=>{
-            console.log('logged in')
+            
             const user = new User(responseData.id,responseData.accessToken);
+
             localStorage.setItem('userData',JSON.stringify(user));
+            
             this.user.next(user);
         }));
     }

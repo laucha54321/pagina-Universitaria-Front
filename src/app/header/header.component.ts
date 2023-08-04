@@ -12,14 +12,31 @@ export class HeaderComponent implements OnInit, OnDestroy{
   isSingedIn = false;
   private userSub: Subscription = new Subscription;
 
-  constructor(private authService:AuthService){}
+  constructor(private authService:AuthService){
+
+  }
 
   ngOnInit(){
     this.userSub = this.authService.user.subscribe(user =>{
-      console.log("Header:",user)
-      this.isSingedIn = !!user.token;
+      if(user){
+        this.isSingedIn = true;
+      }
+      else{
+        this.isSingedIn = false;
+      }
     });
-    console.log('Header: ',this.userSub)
+    // Tengo que llamar aca al autoLogin() xq por alguna razon llamarlo en
+    // app.component.ts no me funciona, creo que tiene que ver con el orden
+    // primero se tiene que realizar la subscripcion.
+    this.authService.autoLogin();
+  }
+
+  onLogout(){
+    this.authService.logout();
+  }
+
+  onClick(){
+    this.authService.autoLogin();
   }
 
   ngOnDestroy(){
