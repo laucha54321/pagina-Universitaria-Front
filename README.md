@@ -5,6 +5,8 @@
 
 [BACK END REPO](https://github.com/laucha54321/tp-mysql-be)
 
+[PROPUESTA](https://github.com/laucha54321/tp-mysql-be/blob/main/Propuesta.md)
+
 # TpDesarolloSoftware
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
