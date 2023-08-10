@@ -4,8 +4,12 @@ import { CursoComponent } from './curso/curso.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { CalificacionesComponent } from './calificaciones/calificaciones.component';
+import { AuthGuard } from './auth/auth.guard';
 const routes: Routes = [
-  { path: 'curso', component: CursoComponent },
+  { 
+    path: 'curso',
+    component: CursoComponent,
+  },
   { path: 'login', component:LoginComponent },
   { path: 'calificaciones', component: CalificacionesComponent },
   { path: '', component: HomeComponent }

@@ -12,16 +12,17 @@ export class HeaderComponent implements OnInit, OnDestroy{
   isSingedIn = false;
   private userSub: Subscription = new Subscription;
 
-  constructor(private authService:AuthService){
-
-  }
+  constructor(private authService:AuthService){}
 
   ngOnInit(){
+    console.log('asjdfkl')
     this.userSub = this.authService.user.subscribe(user =>{
       if(user){
+        console.log(user)
         this.isSingedIn = true;
       }
       else{
+        console.log("Else;",user)
         this.isSingedIn = false;
       }
     });
@@ -33,10 +34,6 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   onLogout(){
     this.authService.logout();
-  }
-
-  onClick(){
-    this.authService.autoLogin();
   }
 
   ngOnDestroy(){

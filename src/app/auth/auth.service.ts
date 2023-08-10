@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router"
 import { Subject } from "rxjs";
 import { tap } from "rxjs/operators";
 import { User } from "./user.model";
 
-interface AuthResponseData{
+export interface AuthResponseData{
     id:string;
     accessToken:string;
 }
@@ -18,8 +18,7 @@ export class AuthService{
 
     user = new Subject<User>();
 
-    constructor(private http: HttpClient, private router:Router){
-    }
+    constructor(private http: HttpClient, private router:Router){}
 
     autoLogin(){
         const userData:{
@@ -28,7 +27,6 @@ export class AuthService{
         } = JSON.parse(localStorage.getItem('userData'));
         if(userData){
             const user = new User(userData.id,userData._token);
-            console.log(user);
             this.user.next(user);
         }else{
             this.router.navigate(['/login']);
@@ -41,10 +39,13 @@ export class AuthService{
     }
 
     login(datos:any){
-        return this.http.post<AuthResponseData>('http://127.0.0.1:3080/login',{
+        return this.http
+        .post<AuthResponseData>('http://127.0.0.1:3080/login',{
             "id":datos.id,
             "contrasena":datos.contrasena
-        }).pipe(tap(responseData=>{
+        })
+        //Agregar Catch Error Despues
+        .pipe(tap(responseData=>{
             
             const user = new User(responseData.id,responseData.accessToken);
 
