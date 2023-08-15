@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
