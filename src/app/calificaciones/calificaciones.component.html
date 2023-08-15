@@ -1,1 +1,24 @@
-<p>calificaciones works!</p>
+<div class="container">
+    <app-header></app-header>
+    <h1>Calificaciones</h1>
+    <div class="table-responsive small">
+        <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+            <th scope="col">MATERIA</th>
+            <th scope="col">TEMA</th>
+            <th scope="col">DESCRIPCION</th>
+            <th scope="col">NOTA</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let nota of notas">
+            <tr>
+            <td>{{nota.nombre}}</td>
+            <td>{{nota.tema}}</td>
+            <td>{{nota.descripcion}}</td>
+            <td>{{nota.nota}}</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>

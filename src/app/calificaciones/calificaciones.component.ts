@@ -12,20 +12,27 @@ import { response } from 'express';
 export class CalificacionesComponent implements OnInit{
 
   private userSub: Subscription = new Subscription;
-
+  user:any;
+  notas = []
   constructor (private authService:AuthService,private http: HttpClient){}
 
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe(user =>{ 
-      console.log(user)
-    })
-    this.http.get(
-      'http://localhost:8080/curso_persona_nota',
-    {headers:
-      {"authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJpYXQiOjE2OTIwNjMzNzksImV4cCI6MTY5MjA4MTM3OX0.EEe-TgAlW9_nv2wsJEiZjDA5qbbp0DDxnbzwf7Ze-mI"}
-    }).subscribe(data=>{
-        console.log(data)
+      this.user = user._token
+
+      console.log("Bearer "+ this.user)
+      this.http.get(
+        'http://localhost:8080/curso_persona_nota',
+      {headers:
+        {"authorization":"Bearer "+ this.user}
+      }).subscribe(data=>{
+          console.log(data)
+          this.notas = data[0]
+          console.log(this.notas)
+        })
+
       })
+
     }
   
 
