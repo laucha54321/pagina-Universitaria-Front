@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { CalificacionesComponent } from './calificaciones/calificaciones.component';
+import { CalificacionesProfesorComponent } from './calificaciones-profesor/calificaciones-profesor.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CalificacionesComponent } from './calificaciones/calificaciones.compone
     HomeComponent,
     LoginComponent,
     HeaderComponent,
-    CalificacionesComponent
+    CalificacionesComponent,
+    CalificacionesProfesorComponent,
   ],
   imports: [
     BrowserModule,
