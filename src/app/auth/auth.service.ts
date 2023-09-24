@@ -27,7 +27,7 @@ export class AuthService{
             const user = new User(userData.id,userData._token);
             this.user.next(user);
         }else{
-            this.router.navigate(['/login']);
+            //this.router.navigate(['/login']);
         }
     }
 

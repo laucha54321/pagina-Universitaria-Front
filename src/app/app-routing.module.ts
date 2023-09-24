@@ -17,7 +17,7 @@ const routes: Routes = [
     component: CalificacionesComponent,
   },
   {path: 'calificaciones/profesor', component:CalificacionesProfesorComponent},
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
 ];
 
 @NgModule({

@@ -14,7 +14,8 @@ export class AuthGuard{
     Promise<boolean>|
     Observable<boolean>
     {
-        return this.authService.user.pipe(map(user =>{ return !!user}));
+        return true; 
+        //this.authService.user.pipe(map(user =>{ return !!user}));
     }
 
 }

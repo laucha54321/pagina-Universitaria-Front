@@ -14,6 +14,22 @@ export class CalificacionesComponent implements OnInit{
   private userSub: Subscription = new Subscription;
   user:any;
   notas = []
+  
+  rowData:any[] = [
+    {nota:9, descripcion: 'Parcial 1', materia:'Matematica Discreta'},
+    {nota:5, descripcion: 'TP', materia:'Matematica Discreta'},
+    {nota:8, descripcion: 'Parcial 2', materia:'Quimica'},
+    {nota:9, descripcion: 'Parcial 1', materia:'Analisis Matematico'},
+    {nota:10, descripcion: 'Parcial 2', materia:'Estadistica'}
+  ];
+  colDefs:any[] = [
+    {field:'nota'},
+    {field:'descripcion'},
+    {field:'materia'}
+  ];
+
+  
+  
   constructor (private authService:AuthService,private http: HttpClient){}
 
   ngOnInit(): void {

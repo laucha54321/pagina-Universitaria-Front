@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { CalificacionesComponent } from './calificaciones/calificaciones.component';
 import { CalificacionesProfesorComponent } from './calificaciones-profesor/calificaciones-profesor.component';
-
+import { AgGridModule } from 'ag-grid-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +28,8 @@ import { CalificacionesProfesorComponent } from './calificaciones-profesor/calif
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AgGridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

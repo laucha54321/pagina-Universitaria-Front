@@ -12,6 +12,13 @@
             <th scope="col">NOTA</th>
             </tr>
         </thead>
+        <ag-grid-angular
+        style="height:500px; width: 800px;"
+        [rowData]="rowData"
+        [columnDefs]="colDefs"
+        >
+
+        </ag-grid-angular>
         <tbody *ngFor="let nota of notas">
             <tr>
             <td>{{nota.nombre}}</td>
